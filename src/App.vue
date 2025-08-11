@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <RouterView v-if="$route.name === 'login'" />
+
+  <DefaultLayout v-else>
+    <RouterView />
+  </DefaultLayout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { DefaultLayout }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.default-layout {
+  display: flex;
+  max-height: 97vh;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  background-color: #ffff;
+  overflow-y: auto;
 }
 </style>
